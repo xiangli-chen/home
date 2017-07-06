@@ -1,0 +1,141 @@
+%sample file: sampart.tex
+% The sample article for the amsart document class
+
+\documentclass{amsart}
+\usepackage{amssymb,latexsym,graphicx}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem*{main}{Main~Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{notation}{Notation}
+
+\numberwithin{equation}{section}
+
+\newcommand{\bx}{{\bf x}}
+\newcommand{\by}{{\bf y}}
+\newcommand{\br}{\boldsymbol{\lambda}}
+
+
+\begin{document}
+\title[sub-title]
+      {Notes of Conditional Random Field}
+\author{Xiangli Chen}
+\address{Computer Science Department\\
+         University of Illinois at Chicago\\
+         Chicago, IL 60607} 
+\email{xchen40@uic.edu}
+\urladdr{https://www.cs.uic.edu/~xchen/}
+%\thanks{thanks.}  
+%\keywords{keywords} 
+%\subjclass[2000]{Primary: 06B10; Secondary: 06D05}
+\date{\today}
+%\begin{abstract}
+%   abstract \emph{emphasize}
+%\end{abstract}
+\maketitle
+%\begin{scriptsize}
+%{\footnotesize •}
+%\end{scriptsize}
+\section{Introduction}\label{sec:intro}
+\noindent HMMs and stochastic grammars \cite{lafferty2001conditional} are generative models, 
+assigning a joint probability to paired observation and label sequences. 
+A generative model needs to enumerate all possbile observation sequences 
+that the inference problem for such model is intractable. 
+This difficulty is one of the main motivation for looking at conditinal models as an alternative.
+A conditional model does not expand modeling effort on the ovservations 
+and the conditional probability of the label sequence can depend on arbitrary, 
+non-independent features of the observation sequence without forcing the model 
+to account for the distribution of those dependencies. 
+Maximum entropy Markov models (MEMMs) \cite{mccallum2000maximum} are conditional probabilistic sequence models. 
+But like other non-generative finite-state models based on next-state classifiers, 
+such as discriminative markov models, MEMMs has the label bias problem: 
+the transitions leaving a given state compete only against each other, 
+rather than against all other transitions in the model.
+\section{Conditional Random Field}\label{sec:intro}
+\noindent {\bf Conditonal random field} (CRFs)\cite{lafferty2001conditional} is a sequence modeling framework 
+that has all the advantages of MEMMs but also solves the label bias problem in a principled way. 
+CRFs perform better than HMMs and MEMMs when the true data distribution has higher-order dependencies than the model, 
+as is ofter the case in practice.
+If the graph $G = (V,E)$ of $Y$ is a tree and the joint distribution is positive, 
+by Hammersley Clifford Theorem\cite{hammersley1971markov}, the conditional model takes the form: 
+\[p(Y|X) = \frac{p(X,Y)}{p(X)} = \frac{1}{P(X)Z}\phi(X)\prod_{e\in E}\phi_e(Y_e,X)\prod_{v\in V}\phi_v(Y_v,X).\]
+where $Z$ is the normalized constant with respect to the joint distribution.
+We can also denote it to be:
+\[p({\bf y}|{\bf x}) = \frac{1}{Z({\bf x})}\exp\left(\sum_{e\in E}\psi_{e}({\bf y}_e,
+{\bf x})+\sum_{v\in V}\psi_{v}({\bf y}_v,{\bf x})\right)\]
+In addition, we assume the conditional model is a probability distribution of exponential families,
+\[p({\bf y}|{\bf x}) = \exp(\phi({\bf x},{\bf y})\cdot \theta-g(\theta|{\bf x})).\]
+Apply Hammersley Clifford Theorem for exponential families,
+\[p({\bf y}|{\bf x}) = \frac{1}{Z({\bf x})}\exp\left(\sum_{e\in E}\phi_e({\bf y}_e,
+{\bf x})\cdot \theta_{e}+\sum_{v\in V}\phi_v({\bf y}_v,{\bf x})\cdot\theta_{v}\right).\]
+We consider a chain-structured CRFs with label sequence $Y = (Y_1,Y_2,...,Y_n)$. 
+The cliques are $(x,y_i)$ and $y_{i-1},y_i$'s. 
+In general, CRFs assume the unknown parameter does not depend on the position of sequence. 
+As a consequence, the conditional model takes the following form:
+\[p({\bf y}|{\bf x})=\frac{1}{Z({\bf x})}\exp\left(\sum_{i=1}^n
+\left(\sum_j\lambda_j t_j(y_{i-1},y_i,{\bf x},i)+\sum_k \mu_k s_k(y_i,{\bf x},i)\right)\right)\]
+where $t_j$'s and $s_k$'s are feature functions.
+Note that the cliques are $(x,y_i)$ and $y_{i-1},y_i$'s or more precisely formulation would be:
+\[p({\bf y}|{\bf x})=\frac{1}{Z({\bf x})}\exp\left(\sum_{i=1}^n
+\left(\sum_j\lambda_j t_j(y_{i-1},y_i)+\sum_k \mu_k s_k(y_i,x_i)\right)\right).\]
+To obtain a more uniform notation, we specifies a feature vector ${\bf f}({\bf y},{\bf x},i)$. 
+An element of the feature vector $f_j({\bf y},{\bf x},i)$ is either a state feature $s_j(y_i,{\bf x},i)$ 
+or transitive feature $t_j(y_{i-1},y_i,{\bf x},i)$. 
+(In general, we let $t_j(y_{i-1},y_i,{\bf x},i)=0$, when $i=1$.)
+Let,\[F_j({\bf y},{\bf x})=\sum_{i=1}^n f_j({\bf y},{\bf x},i).\]
+Then a general conditional model for CRFs is,
+\[p({\bf y}|{\bf x})=\frac{1}{Z({\bf x})}\exp\left(\sum_j\lambda_jF_j({\bf y},
+{\bf x})\right)=\frac{1}{Z({\bf x})}\exp\left(\boldsymbol{\lambda} \cdot{\bf F}({\bf y},{\bf x})\right).\]
+We can train a CRF\cite{sha2003shallow} by maximizing the log-likelihood of a given training set 
+$T=\{({\bf x}_k,{\bf y}_k)\}_{k=1}^N$.
+\[\mathcal{L}_{\boldsymbol{\lambda}}=\sum_k \log p_{\boldsymbol{\lambda}}({\bf y}_k|{\bf x}_k)\]
+The gradient with respect to $\boldsymbol{\lambda}$,
+\[\nabla \mathcal{L}_{\boldsymbol{\lambda}}=\sum_k \left[{\bf F}({\bf y}_k,{\bf x}_k)
+-\mathbb{E}_{p_{\boldsymbol{\lambda}}({\bf y}|{\bf x}_k)}{\bf F}({\bf Y},{\bf x}_k)\right].\]
+\section{Dynamic Programming}
+\noindent The chanllenging part of computing the gradient of CRF is 
+$\mathbb{E}_{p_{\boldsymbol{\lambda}}({\bf y}|{\bf x}_k)}{\bf F}({\bf Y},{\bf x}_k)$. 
+Here we use dynamic programming method.
+\noindent Let $y\in \mathcal{Y}$, given $\bf x$, define $n$ transition matrix
+$\{{\bf M}_i(\mathcal{Y},{\bf x})|i=1,...,n\}$, where each
+${\bf M}_i(\mathcal{Y},\bf x)$ is a $|\mathcal{Y}\times\mathcal{Y}|$
+matrix with elements of the form:
+\[{\bf M}_i[y_{i-1}=y,y_i=y']=\exp\left({\boldsymbol\lambda}^T{\bf f}(y_{i-1}=y,y_i=y',{\bf x},i)\right)\]
+\noindent For each $\lambda_j$, define $n$ feature matrix $\{{\bf Q}_{ji}(\mathcal{Y},{\bf x})|i=1,..,n\}$, 
+where each ${\bf Q}_{ji}(\mathcal{Y},{\bf x})$ is a $|\mathcal{Y}\times\mathcal{Y}|$ 
+matrix with elements of the form:
+\[{\bf Q}_{ji}[y_{i-1}=y,y_i=y']=f_j(y_{i-1}=y,y_i=y',{\bf x},i)\]
+Note that $F_j(\by,\bx)=\sum_{i=1}^n f(y_{i-1},y_i,\bx,i)$. Then,
+\begin{align*}
+\mathbb{E}_{p_{\br}(\by|\bx_k)}F_j({\bf Y},\bx_k)&=\sum_{\by\in\mathcal{Y}}p_{\br}(\by|\bx_k)F_j(\by,\bx_k)\\
+&=\sum_{i=1}^n\frac{{\bf \alpha}_{i-1}^T({\bf Q}_{ji}\circ{\bf M}_i){\bf \beta}_i}{Z_{\br}(\bx)}
+\end{align*}
+where $\circ$ is the element-wise matrix product, $Z_{\br}(\bx)$
+is the norm constant, $\alpha_i$ and $\beta_i$ is
+defined by:
+\begin{align}
+\alpha_i^T = \begin{cases}
+\alpha_{i-1}^T{\bf M}_i & 0< i \le n\\
+{\bf 1}^T & i=0
+\end{cases}. \notag
+\end{align} 
+\begin{align}
+\beta_i = \begin{cases}
+{\bf M}_{i+1}\beta_{i+1} & 0\le i < n\\
+{\bf 1} & i=n
+\end{cases}. \notag
+\end{align}
+Note that $Z_{\br}(\bx)=\alpha_n^T{\bf 1}$. 
+\bibliography{biblio}{}
+%\bibliographystyle{apalike}
+\bibliographystyle{plain}	
+\end{document}
+
