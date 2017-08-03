@@ -9,27 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Bootstrap -->
-    <link href="./bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!--link href="bootstrap-3.3.7-dist/css/ie10-viewport-bug-workaround.css" rel="stylesheet"-->
-
-    <!-- Custom styles for this template -->
-
-    <!--link href="bootstrap-3.3.7-dist/css/starter-template.css" rel="stylesheet"-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <style type="text/css">
-        ul {list-style-type: square}
-    </style>
-    <base target="_blank"><!-- _blank or _self -->
-    <title>Home</title>
 </head>
 
 <body>
@@ -50,6 +29,8 @@
 	<li class="active"><a href="#">Home</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#machineLearning">Machine Learning</a></li>
+    <li><a href="#reinforcementLearning">Reinforcement Learning</a></li>
+    <li><a href="#deepLearning">Deep Learning</a></li>
 </ul>
 </div>
 </div>
@@ -107,75 +88,97 @@
 <h4>Foundation
 <a href="./machine-learning/foundation.pdf"><small>&nbsp; slides</small></a>
 </h4>
+<ul>
+<h4>Probability</h4>
+<ul>
+<li>Theory</li>
+<li>Special Distributions</li>
+<li>Asymptotic Theory</li>
+</ul>
+<h4>Statistical Inference</h4>
+<ul>
+<li>Confidence Interval</li>
+<li>Frequentist Statistics
+<ul>
+    <li>Maximum Likelihood Estimation (MLE)</li>
+    <li>Expectation and Maximization (EM) Algorithm</li>
+</ul>
+</li>
+<li>Bayesian Statistics</li>
+</ul>
+<h4>Linear Algebra</h4>
+<h4>Optimization</h4>
+</ul>
+
 <h4>General Supervised Learning
 <a href="./machine-learning/general-supervised-learning.pdf"><small>&nbsp; slides</small></a>
 </h4>
 <ul>
-<h5>Decision Tree</h5>
-<h5>K Nearest Neighbore</h5>
-<h5>Naive Bayes</h5>
-<h5>Support Vector Machine</h5>
+<li>Decision Tree</li>
+<li>K Nearest Neighbore</li>
+<li>Naive Bayes</li>
+<li>Support Vector Machine</li>
 <ul>
 <li>
 	<a href="./machine-learning/SVM.pdf">ppt</a>
 </li>
 </ul>
-<h5>Logistic Regerssion</h5>
-<h5>Linear Regerssion</h5>
+<li>Logistic Regerssion</li>
+<li>Linear Regerssion</li>
 <ul>
 <li>
     <a href="./machine-learning/linear-regression.pdf">ppt</a>
 </li>
 </ul>
 </ul>
-<h4>Unsupervised Learning</h4>
+<h4>Unsupervised Learning
+<a href="./machine-learning/unsupervised.pdf"><small>&nbsp; slides</small></a>
+</h4>
 <ul>
-<h5>Association Rule</h5>
-<h5>Cluster Analysis</h5>
-<h5>EM Algorithm</h5>
+<li>Association Rule</li>
+<li>Cluster Analysis</li>
 </ul>
 <h4>Model
 <a href="./machine-learning/model.pdf"><small>&nbsp; slides</small></a>
-<ul>
-<h5>Model Assement</h5>
-<h5>Model Selection</h5>
-<h5>Variational Inference</h5>
-<h5>Sampling</h5>
-</ul>
 </h4>
+<ul>
+<li>Model Assement</li>
+<li>Model Selection</li>
+</ul>
+<h4>Approximate Inference
+<a href="./machine-learning/approximate.pdf"><small>&nbsp; slides</small></a>
+</h4>
+<ul>
+<li>Variational Inference</li>
+<li>Sampling<a href="./machine-learning/sampling.pdf">&nbsp; ppt</a></li>
+</ul>
+
 <h4>Learning Theory</h4>
 <h4>Kernel</h4>
 <h4>Gaussian Process</h4>
 <h4>Graphical Model</h4>
 <ul>
-<li>Conditional Random Field notes
-    <a href="./machine-learning/GraphicalModel/CRF.pdf">pdf</a>
+<li>Conditional Random Field
+    <a href="./machine-learning/GraphicalModel/CRF.pdf">doc</a>
 </li>
 </ul>
 <h4>Ensemble Learning</h4>
 <ul>
-<h5>Random Forest</h5>
-<h5>Boosting</h5>
+<li>Random Forest</li>
+<li>Boosting</li>
 </ul>
 <h4>High Dimension</h4>
-<h4>Deep Learning</h4>
-<h4>Reinforcement Learning</h4>
 <h4>Discussion</h4>
 </ul>
 </div>
 
-<!--div id="interviews">
-<h3>Interviews</h3>
-<h4><a >Coding overview</a></h4>
+<div id="reinforcementLearning">
+<h3>Reinforcement Learning</h3>
 </div>
 
-<div id="recruiters">
-<h3>Recruiters</h3>
+<div id="deepLearning">
+<h3>Deep Learning</h3>
 </div>
-
-<div id="resource">
-<h3>Resource</h3>
-</div-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
