@@ -150,6 +150,9 @@
 </h4>
 <ul>
 <li>Variational Inference</li>
+<ul>
+    <li>Mean Field</li>
+</ul>
 <li>Sampling<a href="./machine-learning/sampling.pdf">&nbsp; ppt</a></li>
 </ul>
 
