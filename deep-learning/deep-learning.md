@@ -1,8 +1,8 @@
 # Deep Learning
 ---
 ## Notes
-* ### Foundation
-chain rule, optimization
+* ### Foundation [notes](./foundation.ipynb)
+derivative, partial derivative, chain rule, backprobagation, gradient
 * ### Artificial Neural Networks
 * ### Convolutional Neural Networks
 * ### Recurrent Neural Networks
