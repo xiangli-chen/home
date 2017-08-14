@@ -2,10 +2,12 @@
 ---
 ## Notes
 * ### Foundation [notes](./foundation.ipynb)
-derivative, partial derivative, chain rule, backprobagation, gradient
-* ### Artificial Neural Networks
+derivative, partial derivative, gradient, chain rule, backprobagation
+* ### Artificial Neural Networks [notes](./ann.ipynb)
+* ### Training Neural Networks
 * ### Convolutional Neural Networks
 * ### Recurrent Neural Networks
+* ### Generative Adversarial Networks
 ---
 ## Applications
 ---
@@ -15,7 +17,6 @@ derivative, partial derivative, chain rule, backprobagation, gradient
 ---
 ## Textbooks & Tutorial & Survey
 * ### [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/)
-* ### [Convolutional Neural Network by Stanford](http://cs231n.github.io/convolutional-networks/#layers)
 * ### [Colah's blog](http://colah.github.io/)
 ---
 ## Open courses
