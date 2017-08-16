@@ -4,7 +4,7 @@
 * ### Foundation [notes](./foundation.ipynb)
 derivative, partial derivative, gradient, chain rule, backprobagation
 * ### Artificial Neural Networks [notes](./ann.ipynb)
-* ### Training Neural Networks
+* ### Training Neural Networks [notes](./training.jpynb)
 * ### Convolutional Neural Networks
 * ### Recurrent Neural Networks
 * ### Generative Adversarial Networks
