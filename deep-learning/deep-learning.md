@@ -5,7 +5,7 @@
 derivative, partial derivative, gradient, chain rule, backprobagation
 * ### Artificial Neural Networks [notes](./ann.ipynb)
 * ### Training Neural Networks [notes](./training.ipynb)
-* ### Convolutional Neural Networks
+* ### Convolutional Neural Networks [notes](./cnn.ipynb)
 * ### Recurrent Neural Networks
 * ### Generative Adversarial Networks
 ---
