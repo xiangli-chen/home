@@ -12,7 +12,7 @@ derivative, partial derivative, gradient, chain rule, backprobagation
 ## Applications
 ---
 ## Tools
-* ### TensorFlow [notes](https://github.com/xiangli-chen/tensorFlow-notes) [website](https://www.tensorflow.org/)
+* ### TensorFlow [notes](https://github.com/xiangli-chen/tensorFlow-notes/blob/master/home.md) [website](https://www.tensorflow.org/)
 * ### PyTorch [website](http://pytorch.org/)
 ---
 ## Textbooks & Tutorial & Survey
