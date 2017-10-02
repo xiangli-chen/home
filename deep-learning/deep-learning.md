@@ -6,10 +6,13 @@ derivative, partial derivative, gradient, chain rule, backprobagation
 * ### Artificial Neural Networks [notes](./ann.ipynb)
 * ### Training Neural Networks [notes](./training.ipynb)
 * ### Convolutional Neural Networks [notes](./cnn.ipynb)
-* ### Recurrent Neural Networks
+* ### Recurrent Neural Networks [notes](./rnn.ipynb)
 * ### Generative Adversarial Networks
 ---
 ## Applications
+- ### ANN for imagine classification [link](https://github.com/xiangli-chen/DL-Google-udacity/blob/master/reg.ipynb)
+- ### CNN for imagine classification [link](https://github.com/xiangli-chen/DL-Google-udacity/blob/master/cnn.ipynb)
+- ### RNN for text classification [link](https://github.com/xiangli-chen/DL-Google-udacity/blob/master/rnn.ipynb)
 ---
 ## Tools
 * ### TensorFlow [notes](https://github.com/xiangli-chen/tensorFlow-notes/blob/master/home.md) [website](https://www.tensorflow.org/)
